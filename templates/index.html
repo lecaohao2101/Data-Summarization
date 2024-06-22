@@ -7,73 +7,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Summarization</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <link href="/static/css/jquery-ui.min.css" rel="stylesheet">
 </head>
 
-<body>
-
-    <header style="background-color: #004A56;"
-        class="fixed inset-0 w-full flex flex-col justify-center justify-items-center content-center h-20 rounded-b-lg">
-        <img src="/static/images/summary.png" alt="Logo"
-            class="object-contain w-16 self-center md:self-left md:w-30">
-        <div class="self-center text-white">Text Summary</div>
+<body class="bg-green-100 min-h-screen flex flex-col">
+    <header class="bg-green-600 text-white py-4 shadow-lg">
+        <div class="container mx-auto flex justify-center items-center">
+            <div class="text-2xl font-bold">Text Summary</div>
+        </div>
     </header>
-    </br>
 
-    <section class="flex flex-wrap mt-20 w-full">
-        <div class="w-full md:w-1/2">
-            <form class="w-full flex flex-col md:h-screen" action="{{url_for('Summarize')}}" method="post">
-                <h3 class="self-center"><b>Input Your Text</b></h3>
-                <textarea class="w-11/12 md:h-3/4 m-2 p-2 border-black rounded-lg border self-center justify-center"
-                    name="data" id="data" cols="30" rows="10" placeholder="Enter your Data"
-                    required="required"></textarea>
-                <div class="flex self-center">
-                    <h3>Summary Length</h3>
-                    <input type="range" class="m-2" min="20" max="1000" name="maxL">
+    <main class="flex flex-1 flex-wrap container mx-auto my-8 p-4">
+        <div class="w-full md:w-1/2 px-4">
+            <form class="bg-white p-6 rounded-lg shadow-lg" action="{{url_for('Summarize')}}" method="post">
+                <h3 class="text-xl font-semibold mb-4 text-center">Input Your Text</h3>
+                <textarea class="w-full h-48 p-4 border border-gray-300 rounded-lg mb-4" name="data" id="data" cols="30" rows="10" placeholder="Enter your Data" required></textarea>
+                <div class="flex items-center justify-between mb-4">
+                    <label for="maxL" class="mr-4">Summary Length</label>
+                    <input type="range" class="flex-1" min="20" max="1000" name="maxL" id="maxL">
                 </div>
-                <div class="flex self-center">
-                    <button class="m-1 bg-green-500 hover:bg-blue-700 text-white font-semi-bold py-2 px-4 rounded-lg"
-                        type="submit" onclick="Check()">Submit</button>
-                    <button class="m-1 bg-red-500 hover:bg-blue-700 text-white font-semi-bold py-2 px-4 rounded-lg"
-                        type="reset">Clear</button>
+                <div class="flex justify-between">
+                    <button class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg" type="submit" onclick="Check()">Submit</button>
+                    <button class="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg" type="reset">Clear</button>
                 </div>
-                </br>
             </form>
         </div>
-        <div class="w-full md:w-1/2">
-            <div class="mt-2 flex flex-col w-full md:h-screen">
-                <h3 class="self-center"><b>Output Your Text</b></h3>
-                <textarea style="background-color: #EDFFD2;"
-                    class="w-11/12 border-green-600 rounded-lg p-2 border self-center justify-center md:h-3/4" rows="10"
-                    cols="30" name="result" readonly placeholder="Your Summary">{{result}}</textarea>
-                <button
-                    class="m-2 bg-blue-400 hover:bg-blue-700 text-white font-semi-bold py-2 px-4 rounded-lg self-center"
-                    onclick="myFunction()">Copy text</button>
+        <div class="w-full md:w-1/2 px-4 mt-8 md:mt-0">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-semibold mb-4 text-center">Output Your Text</h3>
+                <textarea class="w-full h-48 p-4 border border-gray-300 rounded-lg mb-4 bg-green-50" rows="10" cols="30" name="result" id="result" readonly placeholder="Your Summary">{{result}}</textarea>
+                <button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg" onclick="myFunction()">Copy text</button>
             </div>
         </div>
-    </section>
+    </main>
+
+    <footer class="bg-green-600 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Text Summarization Tool</p>
+        </div>
+    </footer>
+
     <script>
         function myFunction() {
-            /* Get the text field */
-            var copyText = document.getElementById("myInput");
-
-            /* Select the text field */
+            var copyText = document.getElementById("result");
             copyText.select();
-            copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-            /* Copy the text inside the text field */
+            copyText.setSelectionRange(0, 99999);
             navigator.clipboard.writeText(copyText.value);
+            alert("Copied the text: " + copyText.value);
         }
-    </script>
-    <script>
+
         function Check() {
-
             var reg = /<(.|\n)*>/g;
-
             if (reg.test(document.getElementById("data").value) == true) {
                 var ErrorText = 'Make Sure You Provide Valid Data.';
-                alert('Error Text');
-
+                alert(ErrorText);
             }
         }
     </script>
