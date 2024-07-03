@@ -8,11 +8,14 @@
 <h4> - Text Summarization </h4>
 <h4> - Speech Recognition </h4>
 
-![img_1.png](img_1.png)
+![img_1](https://github.com/lecaohao2101/Data-Summarization/assets/95235601/8248eae5-6c38-4a8d-9ad3-e1945d0ef804)
 
 <h3>Transformers: The Hugging Face transformers package is an immensely popular Python library providing pre-trained models that are extraordinarily useful for a variety of natural language processing (NLP) tasks. Supports Pytorch and TensorFlow 2.0</h3>
-![img_2.png](img_2.png)
-![img_3.png](img_3.png)
+<br/>
+![img_2](https://github.com/lecaohao2101/Data-Summarization/assets/95235601/c67cbbc9-e368-434b-8682-481e65a2059a)
+<br/>
+![img_3](https://github.com/lecaohao2101/Data-Summarization/assets/95235601/8a0a7a0f-afd9-4d76-ac0d-ed5728ddda05)
+<br/>
 
 Say the following sentence is an input sentence we want to translate:
 
